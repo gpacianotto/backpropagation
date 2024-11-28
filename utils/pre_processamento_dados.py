@@ -1,11 +1,15 @@
 import pandas as pd
 import re
+import math
 from itertools import zip_longest
 
 class PreProcessamentoDados:
     def __init__(self, caminho_arquivo):
         
         self.data = pd.read_csv(caminho_arquivo)
+
+        # embaralhando os dados em ordem aleatória
+        self.data = self.data.sample(frac=1).reset_index(drop=True)
         pass
 
     def print_dados(self):
@@ -40,18 +44,14 @@ class PreProcessamentoDados:
         
         n_classes = len(classes.keys())
 
-        splitDfs = self.split_dataframe_by_column("classe")
-
-        for key, dataframe in splitDfs.items():
-            dataframe.to_csv(str(key) + ".csv")
-        
-        
+        sugestao_n_neuronios_camada_oculta = math.ceil(math.sqrt(n_entradas * n_classes))
 
         result = {
             "n_entradas": n_entradas,
             "colunas": colunas,
             "classes": classes,
-            "n_classes": n_classes
+            "n_classes": n_classes,
+            "sugestao_n_neuronios_camada_oculta": sugestao_n_neuronios_camada_oculta
         }
         print(result)
         return result
