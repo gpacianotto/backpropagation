@@ -9,14 +9,14 @@ class Neuronio:
         self.pesos = np.random.rand(n)
         self.vies = vies
         self.n:float = n
-        self.saida = 0
+        self.net = 0
         pass
 
     def setEntrada(self, entrada:list[float]):
         if len(entrada) == len(self.entradas):
             self.entradas = copy.deepcopy(entrada)
     
-    def calcSaida(self):
+    def calcNet(self):
         net:float = 0
         
         for i in range(self.n):
@@ -24,7 +24,10 @@ class Neuronio:
         
         net = net + self.vies
 
-        self.saida = net
+        self.net = net
+    
+    def aplicaFuncao(self):
+        pass
 
 class RedeNeural:
     def __init__(self,n_entradas:int, n_saidas:int, n_neuronios_intermed:int):
@@ -45,14 +48,24 @@ class RedeNeural:
 
     def treinar(self, metadata:PreProcessamentoDados):
         # soon
-
+        entradas = []
         for index, row in metadata.data.iterrows():
             # print(f"Row {index + 1}: {row.to_dict()}")
+            dado_entrada = row.to_dict()
+
+            for i in range(metadata.metadados.get("n_entradas")):
+                entradas.append(float(dado_entrada.get("X" + str(i+1))))
+                pass
             
-            pass
+            for i in range(entradas):
+                self.camada_entrada[i].setEntrada([entradas[i]])
+                self.camada_entrada[i].calcNet()
+
+            
+            entradas = []
 
         pass
 
 
 
-rede = RedeNeural()
+# rede = RedeNeural()

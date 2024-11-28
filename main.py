@@ -8,13 +8,15 @@ def main(page: ft.Page):
     home = HomeScreen(page=page)
 
     # PreProcessamentoDados("treinamento.csv").print_dados()
-    pre_processamento = PreProcessamentoDados("treinamento.csv")
+    pre_processamento = PreProcessamentoDados("dummie.csv")
 
     rede_neural = RedeNeural(
         n_entradas=pre_processamento.metadados.get("n_entradas"),
         n_saidas=pre_processamento.metadados.get("n_classes"),
         n_neuronios_intermed=pre_processamento.metadados.get("sugestao_n_neuronios_camada_oculta")
     )
+
+    rede_neural.treinar(pre_processamento)
 
     page.add(home.view)
 
