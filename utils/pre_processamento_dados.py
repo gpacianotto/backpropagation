@@ -6,10 +6,12 @@ from itertools import zip_longest
 class PreProcessamentoDados:
     def __init__(self, caminho_arquivo):
         
-        self.data = pd.read_csv(caminho_arquivo)
+        self.data:pd.DataFrame = pd.read_csv(caminho_arquivo)
 
         # embaralhando os dados em ordem aleatória
         self.data = self.data.sample(frac=1).reset_index(drop=True)
+
+        self.extrair_info_dados()
         pass
 
     def print_dados(self):
@@ -53,5 +55,6 @@ class PreProcessamentoDados:
             "n_classes": n_classes,
             "sugestao_n_neuronios_camada_oculta": sugestao_n_neuronios_camada_oculta
         }
-        print(result)
-        return result
+        # print(result)
+        # return result
+        self.metadados = result

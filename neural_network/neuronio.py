@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import copy
+from utils.pre_processamento_dados import PreProcessamentoDados
 
 class Neuronio:
     def __init__(self, n:int, vies:float = 1.0):
@@ -42,8 +43,14 @@ class RedeNeural:
             self.camada_saida.append(Neuronio(n_neuronios_intermed))
         pass
 
-    def treinar(self, caminho_arquivo:str):
+    def treinar(self, metadata:PreProcessamentoDados):
         # soon
+
+        for index, row in metadata.data.iterrows():
+            # print(f"Row {index + 1}: {row.to_dict()}")
+            
+            pass
+
         pass
 
 
