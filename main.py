@@ -13,7 +13,8 @@ def main(page: ft.Page):
     rede_neural = RedeNeural(
         n_entradas=pre_processamento.metadados.get("n_entradas"),
         n_saidas=pre_processamento.metadados.get("n_classes"),
-        n_neuronios_intermed=pre_processamento.metadados.get("sugestao_n_neuronios_camada_oculta")
+        n_neuronios_intermed=pre_processamento.metadados.get("sugestao_n_neuronios_camada_oculta"),
+        funcao_transf="logistica"
     )
 
     rede_neural.treinar(pre_processamento)
