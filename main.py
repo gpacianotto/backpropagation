@@ -6,15 +6,16 @@ from neural_network.neuronio import RedeNeural
 def main(page: ft.Page):
     
     home = HomeScreen(page=page)
+    
 
     # PreProcessamentoDados("treinamento.csv").print_dados()
     pre_processamento = PreProcessamentoDados("dummie.csv")
 
     rede_neural = RedeNeural(
-        n_entradas=pre_processamento.metadados.get("n_entradas"),
-        n_saidas=pre_processamento.metadados.get("n_classes"),
-        n_neuronios_intermed=pre_processamento.metadados.get("sugestao_n_neuronios_camada_oculta"),
-        funcao_transf="logistica"
+        n_entradas=int(pre_processamento.metadados.get("n_entradas")),
+        n_saidas=int(pre_processamento.metadados.get("n_classes")),
+        n_neuronios_intermed=int(pre_processamento.metadados.get("sugestao_n_neuronios_camada_oculta")),
+        funcao_transf="tang_hiperbolica"
     )
 
     rede_neural.treinar(pre_processamento)

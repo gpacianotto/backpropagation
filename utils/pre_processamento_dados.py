@@ -11,6 +11,9 @@ class PreProcessamentoDados:
         # embaralhando os dados em ordem aleatória
         self.data = self.data.sample(frac=1).reset_index(drop=True)
 
+        # normalizando dados
+        # self.data = (self.data - self.data.min())/(self.data.max() - self.data.min())
+
         self.extrair_info_dados()
         pass
 
