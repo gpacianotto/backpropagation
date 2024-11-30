@@ -44,6 +44,8 @@ class Neuronio:
         # print("net: ",self.net)
         self.saida = self.funcoes[funcao]["value"](self.net)
         # print("saida: ",self.saida)
+    def aplicaDerivada(self, funcao:string):
+        return self.funcoes[funcao]["derivate"](self.net)
 
 class RedeNeural:
     def __init__(self,n_entradas:int, n_saidas:int, n_neuronios_intermed:int, funcao_transf:str):
@@ -169,6 +171,7 @@ class RedeNeural:
         entradas = []
         entradas_camada_saida = []
         saida = []
+        erro = []
         n_classes = int(metadata.metadados.get("n_classes"))
         saidas_esperadas= np.zeros(n_classes)
 
@@ -208,12 +211,13 @@ class RedeNeural:
             print("saida: ",saida)
 
             # calcular o erro
-            for i in range(saida):
-               pass 
+            for i in range(self.camada_saida):
+                erro.append((saidas_esperadas[i] - saida[i]) * ())
 
             entradas.clear()
             entradas_camada_saida.clear()
             saida.clear()
+            erro.clear()
             saidas_esperadas= np.zeros(n_classes)
 
         pass
