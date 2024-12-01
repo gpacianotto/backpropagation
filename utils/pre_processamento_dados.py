@@ -4,7 +4,7 @@ import math
 from itertools import zip_longest
 
 class PreProcessamentoDados:
-    def __init__(self, caminho_arquivo):
+    def __init__(self, caminho_arquivo:str, caminho_arquivo_teste:str):
         
         self.data:pd.DataFrame = pd.read_csv(caminho_arquivo)
 
@@ -12,14 +12,24 @@ class PreProcessamentoDados:
         self.data = self.data.sample(frac=1).reset_index(drop=True)
 
         # normalizando dados
-        # self.data = (self.data - self.data.min())/(self.data.max() - self.data.min())
+        for col in self.data.columns:
+            if re.match(r"^X\d+$", col):
+                self.data[col] = (self.data[col] - self.data[col].min())/(self.data[col].max() - self.data[col].min())
+
+        self.data_teste = pd.read_csv(caminho_arquivo_teste)
+
+        self.data_teste = self.data_teste.sample(frac=1).reset_index(drop=True)
+
+        for col in self.data_teste.columns:
+            if re.match(r"^X\d+$", col):
+                self.data_teste[col] = (self.data_teste[col] - self.data_teste[col].min())/(self.data_teste[col].max() - self.data_teste[col].min())
 
         self.extrair_info_dados()
         pass
 
     def print_dados(self):
         for index, row in self.data.iterrows():
-                print(f"Row {index + 1}: {row.to_dict()}")
+            print(f"Row {index + 1}: {row.to_dict()}")
     
     def split_dataframe_by_column(self, column_name):
         dataframes = {}
