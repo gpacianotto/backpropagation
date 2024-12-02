@@ -6,7 +6,7 @@ class TipoCondicaoParada(Enum):
     NUM_INTERACOES = auto()
 
 class CondicaoParada():
-    def __init__(self, tipo:TipoCondicaoParada,  value:int|float):
+    def __init__(self, tipo:TipoCondicaoParada,  value):
         self.tipo:TipoCondicaoParada = tipo
         if self.tipo == TipoCondicaoParada.ERRO_MAXIMO and not isinstance(value, float):
             raise Exception("Valor deve ser float")

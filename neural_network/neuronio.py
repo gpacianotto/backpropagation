@@ -180,7 +180,7 @@ class RedeNeural:
                 break
             
             print(f"iteração {n_iter} -> erro da rede: {erro_rede_final}")
-            console.printOnConsole(s=f"iteração {n_iter} -> erro da rede: {erro_rede_final}")
+            console.printOnConsole(s=f"iteração {n_iter} -> erro da rede: {'{:.20f}'.format(erro_rede_final)}")
             n_iter += 1
 
             pass
