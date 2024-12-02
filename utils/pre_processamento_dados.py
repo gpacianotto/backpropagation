@@ -2,9 +2,13 @@ import pandas as pd
 import re
 import math
 from itertools import zip_longest
+from utils.singleton import SingletonBase
 
-class PreProcessamentoDados:
-    def __init__(self, caminho_arquivo:str, caminho_arquivo_teste:str):
+class PreProcessamentoDados(SingletonBase):
+    def __init__(self, caminho_arquivo:str = None, caminho_arquivo_teste:str = None):
+        
+        if caminho_arquivo == None or caminho_arquivo_teste == None:
+            return
         
         self.data:pd.DataFrame = pd.read_csv(caminho_arquivo)
 
