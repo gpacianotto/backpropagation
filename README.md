@@ -9,7 +9,7 @@ Implementação de Backpropagation, faz parte de um trabalho proposto na matéri
 source .venv/bin/activate
 ```
 
-1. Para rodar esta implementação você precisa primeiro instalar a biblioteca `flet`, utilizada para o desenvolvimento da interface do jogo:
+1. Para rodar esta implementação você precisa primeiro instalar a biblioteca `flet`, utilizada para o desenvolvimento da interface do programa:
 
 ```bash
 pip install flet
@@ -20,4 +20,4 @@ pip install flet
 ```bash
 flet run
 ```
-3. Se tudo der certo, aparecerá a interface do jogo para você interagir.
+3. Se tudo der certo, aparecerá a interface do programa para você interagir.
