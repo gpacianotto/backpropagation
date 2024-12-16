@@ -1,7 +1,7 @@
 # backpropagation
 Implementação de Backpropagation, faz parte de um trabalho proposto na matéria de Inteligência Artificial no curso de Bacharelado em Ciência da Computação na Faculdade de Ciências e Tecnologia - UNESP.
 
-The implementation of Backpropagation, it's part of a work that has been requested on the Artificial Inteligence subject that is part of the Computer Science Degree on São Paulo State University. 
+The implementation of Backpropagation, it's part of a work that has been requested in the Artificial Inteligence subject that is part of the Computer Science Degree on São Paulo State University. 
 
 # Como Rodar
 
